@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model IndexViewModel
+
+<div class="text-center">
+    <h1 class="display-4">Bowler Information</h1>
+    @*only shows a heading of the teamname if it is not null*@
+    @if(Model.TeamName != null)
+    {
+        <h2>Team Name: @Model.TeamName</h2>
+    }
+    @*Creates a table of all the bowler information*@
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>First Name</th>
+                <th>Middle Initial</th>
+                <th>Last Name</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zip</th>
+                <th>Phone</th>
+            </tr>
+        </thead>
+        <tbody class="table-striped">
+            @foreach (var i in Model.Bowlers)
+            {
+            <tr>
+                <td>@i.BowlerFirstName</td>
+                <td>@i.BowlerMiddleInit</td>
+                <td>@i.BowlerLastName</td>
+                <td>@i.BowlerAddress</td>
+                <td>@i.BowlerCity</td>
+                <td>@i.BowlerState</td>
+                <td>@i.BowlerZip</td>
+                <td>@i.BowlerPhoneNumber</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div page-info="@Model.PageInfo" page-url-team="@Model.TeamName" page-classes-enabled="true" page-class="btn" page-class-normal="btn-outline-dark" page-class-selected="btn-primary">
+
+</div>

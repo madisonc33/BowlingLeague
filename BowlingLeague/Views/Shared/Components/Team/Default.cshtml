@@ -1,0 +1,19 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model IEnumerable<Team>
+
+<a class="btn btn-block btn-outline-secondary" asp-action="Index" asp-controller="Home" asp-route-team="" asp-route-teamid="">Home</a>
+<br />
+
+@*creates a new link for each team in the list. Has a different class if a team name is selected*@
+@foreach (var i in Model)
+{
+    <a class="btn btn-block
+       @(i.TeamName == ViewBag.SelectedType ? "btn-primary" : "btn-outline-secondary")"
+       asp-action="Index" asp-controller="Home" asp-route-team="@i.TeamName" asp-route-teamid="@i.TeamId" asp-route-pageNum="1">@i.TeamName</a>
+    <br />
+}
